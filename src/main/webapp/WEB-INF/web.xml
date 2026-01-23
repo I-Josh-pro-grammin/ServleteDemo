@@ -4,12 +4,52 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <context-param>
+    <param-name>appName</param-name>
+    <param-value>Calculator</param-value>
+  </context-param>
   <servlet>
     <servlet-name>sum</servlet-name>
     <servlet-class>org.servlet.SumServlet</servlet-class>
+    <init-param>
+      <param-name>servletDescription</param-name>
+      <param-value>For adding numbers</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>sum</servlet-name>
     <url-pattern>/add</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>output</servlet-name>
+    <servlet-class>org.servlet.DisplayResultsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>output</servlet-name>
+    <url-pattern>/display</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>home</servlet-name>
+    <servlet-class>org.servlet.Home</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>home</servlet-name>
+    <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>footer</servlet-name>
+    <servlet-class>org.servlet.FooterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>footer</servlet-name>
+    <url-pattern>/footer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>header</servlet-name>
+    <servlet-class>org.servlet.HeaderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>header</servlet-name>
+    <url-pattern>/header</url-pattern>
   </servlet-mapping>
 </web-app>
