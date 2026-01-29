@@ -4,7 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <welcome-file-list>
-    <welcome-file>home</welcome-file>
-  </welcome-file-list>
+  <filter>
+    <filter-name>positiveNumbers</filter-name>
+    <filter-class>org.servlet.Filters.PositiveNumbers</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>positiveNumbers</filter-name>
+    <url-pattern>/add</url-pattern>
+  </filter-mapping>
+<!--  <welcome-file-list>-->
+<!--    <welcome-file>home</welcome-file>-->
+<!--  </welcome-file-list>-->
 </web-app>

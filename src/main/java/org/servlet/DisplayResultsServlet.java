@@ -3,17 +3,14 @@ package org.servlet;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet("/display")
 public class DisplayResultsServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws IOException, ServletException {
 
         res.setContentType("text/html");
@@ -21,11 +18,24 @@ public class DisplayResultsServlet extends HttpServlet {
 
         req.getRequestDispatcher("/header").include(req, res);
 
-        HttpSession session = req.getSession();
+        Cookie[] cookies = req.getCookies();
+        if (cookies == null || cookies.length == 0) {
+            out.println("No cookies");
+            return;
+        }
 
-        int num1 = (int) session.getAttribute("fNum");
-        int num2 = (int) session.getAttribute("sNum");
-        String operation = (String) session.getAttribute("operation");
+        int num1 = 0;
+        int num2 = 0;
+        String operation = null;
+
+        for (Cookie ck : cookies) {
+            switch (ck.getName()) {
+                case "fNum" -> num1 = Integer.parseInt(ck.getValue());
+                case "sNum" -> num2 = Integer.parseInt(ck.getValue());
+                case "operation" -> operation = ck.getValue();
+            }
+        }
+
 
         if ("sum".equals(operation)) {
             out.println("Sum: " + (num1 + num2));
@@ -35,6 +45,6 @@ public class DisplayResultsServlet extends HttpServlet {
             out.println("Division: " + (num1 / num2));
         }
 
-        req.getRequestDispatcher("/footer").include(req, res);
+        req.getRequestDispatcher("footer").include(req, res);
     }
 }
