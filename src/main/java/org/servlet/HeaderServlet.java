@@ -1,9 +1,11 @@
 package org.servlet;
 
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+@WebServlet("/header")
 public class HeaderServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
         PrintWriter out = res.getWriter();

@@ -2,13 +2,16 @@ package org.servlet;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
+@WebServlet("/display")
 public class DisplayResultsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws IOException, ServletException {
@@ -18,9 +21,11 @@ public class DisplayResultsServlet extends HttpServlet {
 
         req.getRequestDispatcher("/header").include(req, res);
 
-        int num1 = (int) req.getAttribute("fNum");
-        int num2 = (int) req.getAttribute("sNum");
-        String operation = (String) req.getAttribute("operation");
+        HttpSession session = req.getSession();
+
+        int num1 = (int) session.getAttribute("fNum");
+        int num2 = (int) session.getAttribute("sNum");
+        String operation = (String) session.getAttribute("operation");
 
         if ("sum".equals(operation)) {
             out.println("Sum: " + (num1 + num2));

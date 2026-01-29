@@ -4,22 +4,20 @@ import jakarta.servlet.RequestDispatcher;
 //import jakarta.servlet.ServletConfig;
 //import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
+@WebServlet("/add")
 public class SumServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         String s1 = req.getParameter("num1");
         String s2 = req.getParameter("num2");
-
-//        ServletConfig conf = getServletConfig();
-//        ServletContext context = getServletContext();
-//        String servletDesc = conf.getInitParameter("servletDescription");
-//        String appName = conf.getInitParameter("appName");
 
         PrintWriter out = res.getWriter();
 
@@ -38,14 +36,13 @@ public class SumServlet extends HttpServlet {
         }
 
 //        int sum = num2 + num1;
-        req.setAttribute("fNum", num1);
-        req.setAttribute("sNum", num2);
-        req.setAttribute("operation", operation);
+        HttpSession session = req.getSession();
+        session.setAttribute("fNum", num1);
+        session.setAttribute("sNum", num2);
+        session.setAttribute("operation", operation);
+
         RequestDispatcher rd = req.getRequestDispatcher("display");
         rd.forward(req, res);
 
-//        out.println("App name: " + appName);
-//        out.println("Description: "+servletDesc);
-//        out.print("Sum is:" + sum);
     }
 }
