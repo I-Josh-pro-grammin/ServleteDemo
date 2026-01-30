@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/home")
+//@WebServlet("/home")
 public class Home extends HttpServlet {
     protected  void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         res.setContentType("text/html");

@@ -10,7 +10,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/add")
+//@WebServlet("/add")
 public class SumServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         PrintWriter out = res.getWriter();

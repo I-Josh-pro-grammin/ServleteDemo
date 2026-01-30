@@ -8,7 +8,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/display")
+//@WebServlet("/display")
 public class DisplayResultsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws IOException, ServletException {
