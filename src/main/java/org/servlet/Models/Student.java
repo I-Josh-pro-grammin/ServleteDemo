@@ -1,7 +1,7 @@
 package org.servlet.Models;
 
 public class Student {
-    private String studentId;
+    private int studentId;
     private String studentFirstname;
     private String StudentLastname;
 
@@ -9,13 +9,13 @@ public class Student {
 
     }
 
-    public Student(String studentId, String studentFirstname, String studentLastname) {
+    public Student(int studentId, String studentFirstname, String studentLastname) {
         this.studentId = studentId;
         this.studentFirstname = studentFirstname;
         StudentLastname = studentLastname;
     }
 
-    public String getStudentId() {
+    public int getStudentId() {
         return studentId;
     }
 
@@ -27,7 +27,7 @@ public class Student {
         return StudentLastname;
     }
 
-    public void setStudentId(String studentId) {
+    public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
 

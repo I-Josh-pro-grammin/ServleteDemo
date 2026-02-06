@@ -4,16 +4,7 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <filter>
-    <filter-name>positiveNumbers</filter-name>
-    <filter-class>org.servlet.Filters.PositiveNumbers</filter-class>
-  </filter>
-  
-  <filter-mapping>
-    <filter-name>positiveNumbers</filter-name>
-    <url-pattern>/add</url-pattern>
-  </filter-mapping>
-  
+
 <!--  <servlet>-->
 <!--    <servlet-name>sum</servlet-name>-->
 <!--    <jsp-file>/add.jsp</jsp-file>-->
@@ -23,14 +14,14 @@
 <!--    <url-pattern>/add</url-pattern>-->
 <!--  </servlet-mapping>-->
   <servlet>
-    <servlet-name>result</servlet-name>
-    <jsp-file>/result.jsp</jsp-file>
+    <servlet-name>register</servlet-name>
+    <servlet-class>org.servlet.Services.StudentService</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>result</servlet-name>
-    <url-pattern>/Result</url-pattern>
+    <servlet-name>register</servlet-name>
+    <url-pattern>/register</url-pattern>
   </servlet-mapping>
-<!--  <welcome-file-list>-->
-<!--    <welcome-file>home</welcome-file>-->
-<!--  </welcome-file-list>-->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
 </web-app>

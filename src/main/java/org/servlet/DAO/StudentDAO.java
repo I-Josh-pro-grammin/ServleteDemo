@@ -14,16 +14,20 @@ public class StudentDAO {
     }
 
     public boolean save(Student s) {
+        String sql="insert into students" + "(stud_id, stud_Firstname, stud_Lastname)" + " VALUES(?, ?, ?)";
 
-        try(Connection con =  db.getConnection()) {
+        try(Connection con =  db.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, s.getStudentId());
+            ps.setString(2, s.getStudentFirstname());
+            ps.setString(3, s.getStudentLastname());
 
-            PreparedStatement ps =
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            int rowsInserted = ps.executeUpdate();
+            return rowsInserted > 0;
+
+            }catch(SQLException e) {
+
+            e.printStackTrace();
+            return false;
         }
-            String st="insert into students(stud_id, stud_Firstname, stud_Lastname) VALUES(?, ?, ?)";
-
-
-        return true;
     }
 }
