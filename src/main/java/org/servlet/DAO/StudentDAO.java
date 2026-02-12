@@ -14,7 +14,7 @@ public class StudentDAO {
     }
 
     public boolean save(Student s) {
-        String sql="insert into students" + "(stud_id, stud_Firstname, stud_Lastname)" + " VALUES(?, ?, ?)";
+        String sql="insert into students" + "(id, firstname, lastname)" + " VALUES(?, ?, ?)";
 
         try(Connection con =  db.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, s.getStudentId());

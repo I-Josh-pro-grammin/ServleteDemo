@@ -12,6 +12,12 @@ public class DbUtil {
   private static final String PASSWORD = "100aistuff";
 
   public Connection getConnection() throws SQLException, SQLException {
+    try{
+      Class.forName("org.postgresql.Driver");
+      return DriverManager.getConnection(URL, USER, PASSWORD);
+    }catch(Exception e) {
+      e.printStackTrace();
+    }
     return DriverManager.getConnection(URL, USER, PASSWORD);
   }
 }
